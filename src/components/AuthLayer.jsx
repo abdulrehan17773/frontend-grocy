@@ -17,13 +17,13 @@ export default function Protected({ children, authentication = true }) {
   }, [authStatus, navigate, authentication]);
 
   if (loader) {
-    return <div>Loading...</div>; // Or a better loading indicator
+    return <div>Loading...</div>;
   }
 
-  // This is the crucial part: Render the children if authentication is correct
-  if (authentication === authStatus) { // added this line to check if the status is same as the authentication
+
+  if (authentication === authStatus) { 
     return children;
   }
-  return null; // or you can return <div>Not Authorized </div>
+  return null; 
 
 }
