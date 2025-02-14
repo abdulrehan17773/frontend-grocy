@@ -1,6 +1,8 @@
-import authService from "../apis/authApis"
+import authService from "./authApi"
+import productsService from "./proApi"
 
 
 export {
-    authService
+    authService,
+    productsService
 }
