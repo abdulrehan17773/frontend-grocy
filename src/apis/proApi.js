@@ -2,10 +2,9 @@ import axios from "axios";
 
 export class ProductsService {
 
-    async getProducts ({page, featured = true }) {
-        console.log(page, featured)
+    async getProducts () {
         try {
-           const response =  await axios.get('/api/pro/getall', {featured, page})
+           const response =  await axios.get(`/api/order/getall`)
            return response.data;
         } catch (error) {
             throw error
