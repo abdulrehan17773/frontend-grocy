@@ -1,24 +1,24 @@
-import React, {useId} from "react";
+import React, { useId } from "react";
 
-const Input = ({label, type, className = "", ...props}, ref) => {
+const Input = ({ label,labelClassName, type, className = "", error, ...props }) => { // No ref needed
+  const id = useId();
+  return (
+    <div className="w-full">
+      {label && (
+        <label htmlFor={id} className={`inline-block mb-1 pl-1 ${labelClassName}` }>
+          {label}
+        </label>
+      )}
+      <input
+        type={type}
+        id={id}
+        className={`px-2 rounded-lg bg-white text-black outline-none  duration-200 border  w-full ${className} ${error ? 'border-red-500' : ''}`}
+        {...props} // All other props including react-hook-form's register are passed here
+      />
+      {error && <small className="text-red-500 text-[12px] mt-0">{error}</small>}
 
-    const id = useId();
-    return(
-        <div className="w-full">
-            {label && <label
-                htmlFor={id}
-                className="inline-block mb-1 pl-1">
-                {label}
-            </label>}
-            <input
-            type={type}
-            id={id}
-            className={`px-3 py-2 rounded-lg bg-white text-black outline-none focus:bg-gray-50 duration-200 border border-gray-200 w-full ${className} `}
-            ref={ref}
-            {...props}
-            />
-        </div>
-    )
-}
+    </div>
+  );
+};
 
-export default React.forwardRef(Input);
+export default Input; // No forwardRef needed
