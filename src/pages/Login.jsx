@@ -19,9 +19,7 @@ function Login() {
     try {
       const response = await loginUser({ email, password }).unwrap();
       if (response.success) {
-        console.log(response.data.user);
         dispatch(login({ userData: response.data.user }))
-        // navigate('/');
         return;
       }
     } catch (error) {

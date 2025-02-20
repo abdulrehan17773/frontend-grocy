@@ -5,6 +5,7 @@ import Input from './Input'
 import Select from './Select'
 import Header from './Header/Header'
 import Footer from './Footer/Footer'
+import Card from './Card'
 
 export {
     Protected,
@@ -13,5 +14,6 @@ export {
     Input,
     Select,
     Header,
-    Footer
+    Footer,
+    Card
 }

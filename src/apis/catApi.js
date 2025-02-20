@@ -1,18 +1,17 @@
-import axios from "axios";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export class CatService {
+export const catApi = createApi({
+    reducerPath: "catApi",
+    baseQuery: fetchBaseQuery({baseUrl: "/api"}),
+    endpoints: (builder) => ({
+        getCat: builder.query({
+            query: () => ({
+                url: "/cat/getall",
+                method: "GET"
+            })
+        })
+    })
+})
 
-    async getCategories () {
-        try {
-           const response =  await axios.get(`/api/cat/getall`)
-           return response.data;
-        } catch (error) {
-            throw error
-        }
-    }
-
-};
-
-const catService = new CatService();
-
-export default catService;
+export const { useGetCatQuery } = catApi;
+ 
